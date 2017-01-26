@@ -1,1 +1,21 @@
 @import "bootstrap";
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-color: rgb(242,242,242);
+}
+
+
+
+.display-box{
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  background-color: rgb(255,255,255);
+  border-radius: 6px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 20px;
+}
