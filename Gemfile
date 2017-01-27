@@ -59,3 +59,5 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 #adds awesome font
 gem "font-awesome-rails"
 
+#adds devise
+gem "devise"
