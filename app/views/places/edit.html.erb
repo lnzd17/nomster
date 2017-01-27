@@ -1,11 +1,11 @@
 <div class="display-box col-8 offset-2">
-<h1>Enter Place Details Here</h1>
+<h1>Edit Place Details Here</h1>
 <br />
 <%= simple_form_for @place do |f| %>
 <%= f.input :name %>
 <%= f.input :address %>
 <%= f.input :description %>
 <br />
-<%= f.submit 'Create', class: 'btn btn-warning' %>
+<%= f.submit 'Update', class: 'btn btn-warning' %>
 <% end %>
 </div>
