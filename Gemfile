@@ -47,7 +47,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-#adds boostrap 
+#adds boostrap
 gem 'bootstrap', '~> 4.0.0.alpha6'
 
 #adds simpleForm
@@ -61,3 +61,9 @@ gem "font-awesome-rails"
 
 #adds devise
 gem "devise"
+
+#adds geocoder
+gem "geocoder"
+
+#adds figaro
+gem "figaro"
