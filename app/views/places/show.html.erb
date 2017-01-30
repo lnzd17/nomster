@@ -44,11 +44,15 @@
 </div>
 
 
+<div class="col-10 offset-1">
+  <h1 class="float-left">Comments</h1>
+  <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#myModal">
+    Add a comment
+  </button>
+</div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg offset-5" data-toggle="modal" data-target="#myModal">
-  Add a comment
-</button>
+<div class="clear"></div>
+<br/>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -66,6 +70,7 @@
             <%= f.input :message %>
             <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
       </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <%= f.submit "Add a Comment", class: 'btn btn-warning' %>
@@ -76,25 +81,30 @@
 </div>
 
 
-<% if @place.comments.present? %>
-<div class=" col-4 offset-4">
-    <% @place.comments.each do |comment| %>
-    <div class="display-box-comments">
-      <% if comment.humanized_rating.present? %>
-        <blockquote>
-            <b><%= comment.humanized_rating %>
-            </b>
-            -
-            <% end %>
-            <%= comment.message %>
-        </blockquote>
-        <small><%=comment.user.email %></small>
+<div class="row">
+  <% if @place.comments.present? %>
+  <% @place.comments.each do |comment| %>
+    <div class="col-12 col-sm-6 ">
+      <blockquote class="display-box-comments">
+        <% if comment.humanized_rating.present? %>
+          <h4><%= comment.humanized_rating %></h4>
+          <br/>
+        <% end %>
+        <i class="fa fa-quote-left" aria-hidden="true"></i>
+        <span class="comment-font"><%= comment.message %> </span>
+        <i class="fa fa-quote-right" aria-hidden="true"></i>
+        -
+        <small><%= comment.user.email %></small>
+      </blockquote>
     </div>
+  <% end %>
+  <% else %>
+<div class="col-4 offset-4">
+  <blockquote class="display-box">
+    Tell us what you think
+    </blockquote>
+  </div>
     <% end %>
+
+
 </div>
-<% else %>
-<div class="display-box col-4 offset-4">
-    <div class="alert alert-warning">
-        Add some love or productive feedback!</div>
-</div>
-<% end %>

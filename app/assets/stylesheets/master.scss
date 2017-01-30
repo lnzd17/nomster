@@ -6,10 +6,15 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 
+h4{
+  text-align: center;
+}
+
 body{
   background: image_url('food.png');
   font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
 }
+
 
 .navbar{
   background:image_url('footer_lodyas.png');
@@ -52,8 +57,8 @@ body{
 }
 
 .btn-primary{
-  background-color: #f83177;
-  border-color: #f83177;
+  background-color: #acfce0;
+  border: 1px solid #acfce0;
   color:black;
 }
 
@@ -93,10 +98,13 @@ body{
   border-radius: 6px;
   margin: 10px;
   padding: 5px;
-  text-align: center;
 }
 
 .alert-warning{
   margin-top:auto;
   margin-bottom: auto;
+}
+
+.comment-font{
+  font-size: 1.2em;
 }
