@@ -49,6 +49,23 @@
   <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
     <%= f.input :message %>
     <%= f.input :rating %>
-    <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
+    <%= f.submit "Add a Comment", class: 'btn btn-warning' %>
   <% end %>
 </div>
+
+<% if @place.comments.present? %>
+<div class="display-box col-4 offset-4">
+<% @place.comments.each do |comment| %>
+<div class="display-box-comments">
+  <blockquote>
+    <b><%= comment.rating %> </b> - <%= comment.message %>
+</blockquote>
+<small><%=comment.user.email %></small>
+</div>
+<% end %>
+</div>
+<% else %>
+<div class="display-box col-4 offset-4">
+  <div class="alert alert-warning"> Add some love or productive feedback!</div>
+</div>
+<% end %>
