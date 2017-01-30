@@ -12,7 +12,7 @@
     </p>
 
     <% if @place.latitude.present? && @place.longitude.present? %>
-      <script>
+    <script>
 
         function initMap() {
             var myLatLng = {
@@ -27,15 +27,15 @@
 
             var marker = new google.maps.Marker({position: myLatLng, map: map, title: 'Hello World!'});
         }
-        </script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWNadHm-Cjr4DXRFZ2KIslXht0zczZYk0&callback=initMap"></script>
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWNadHm-Cjr4DXRFZ2KIslXht0zczZYk0&callback=initMap"></script>
 
-        <div id="map"></div>
-        <% else %>
-        <div class="alert alert-danger">No map to display. Address is not vaild</div>
+    <div id="map"></div>
+<% else %>
+    <div class="alert alert-danger">No map to display. Address is not vaild</div>
     <% end %>
 
-    <br />
+    <br/>
 
     <div class="float-right button-space">
         <% if current_user && current_user == @place.user %>
@@ -46,26 +46,32 @@
 </div>
 
 <div class="display-box col-4 offset-4 clear">
-  <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
+    <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
     <%= f.input :message %>
-    <%= f.input :rating %>
+    <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
     <%= f.submit "Add a Comment", class: 'btn btn-warning' %>
-  <% end %>
+    <% end %>
 </div>
 
 <% if @place.comments.present? %>
 <div class="display-box col-4 offset-4">
-<% @place.comments.each do |comment| %>
-<div class="display-box-comments">
-  <blockquote>
-    <b><%= comment.rating %> </b> - <%= comment.message %>
-</blockquote>
-<small><%=comment.user.email %></small>
-</div>
-<% end %>
+    <% @place.comments.each do |comment| %>
+    <div class="display-box-comments">
+      <% if comment.humanized_rating.present? %>
+        <blockquote>
+            <b><%= comment.humanized_rating %>
+            </b>
+            -
+            <% end %>
+            <%= comment.message %>
+        </blockquote>
+        <small><%=comment.user.email %></small>
+    </div>
+    <% end %>
 </div>
 <% else %>
 <div class="display-box col-4 offset-4">
-  <div class="alert alert-warning"> Add some love or productive feedback!</div>
+    <div class="alert alert-warning">
+        Add some love or productive feedback!</div>
 </div>
 <% end %>
