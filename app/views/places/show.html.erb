@@ -80,6 +80,13 @@
   </div>
 </div>
 
+<div class="display-box col-8 offset-2">
+<%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+  <%= f.input :caption %>
+  <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
+<% end %>
+</div>
+
 
 <div class="row">
   <% if @place.comments.present? %>
