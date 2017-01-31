@@ -67,3 +67,6 @@ gem "geocoder"
 
 #adds figaro
 gem "figaro"
+
+#adds carrierview
+gem 'carrierwave'
