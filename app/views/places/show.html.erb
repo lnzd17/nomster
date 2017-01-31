@@ -1,4 +1,12 @@
 <div class="display-box col-8 offset-2">
+  <% if @place.photos.present? %>
+  <div class="test">
+  <% @place.photos.each do |photo| %>
+          <h4><%= photo.caption %></h4>
+        <% end %>
+</div>
+<% end %>
+
     <h1>
         <%= @place.name %>
     </h1>
