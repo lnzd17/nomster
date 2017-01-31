@@ -5,11 +5,29 @@
   <p><%= place.description %></p><br />
   <% if place.user.present? %>
   <small><%= place.user.email %></small>
+  <br/>
+    <br/>
   <% end %>
+<% if place.comments.present? %>
+<div class="col-12">
+  <span class="comment-count"><i class="fa fa-comments" aria-hidden="true"></i><%=link_to "#{place.comments.count} Comment(s)", place_path(place) %></span>
+  <blockquote class="display-box-comments">
+    <% if place.comments.last.humanized_rating.present? %>
+      <h4><%= place.comments.last.humanized_rating %></h4>
+      <br/>
+    <% end %>
+    <i class="fa fa-quote-left" aria-hidden="true"></i>
+    <span class="comment-font"><%= place.comments.last.message %> </span>
+    <i class="fa fa-quote-right" aria-hidden="true"></i>
+    -
+    <small><%= place.comments.last.user.email %></small>
+  </blockquote>
 </div>
 <% end %>
+</div>
+<% end %>
+
 
 <div class="col-10 offset-lg-5">
 <%= will_paginate @places %>
 </div>
-
