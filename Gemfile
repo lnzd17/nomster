@@ -70,3 +70,6 @@ gem "figaro"
 
 #adds carrierview
 gem 'carrierwave'
+
+#adds fog
+gem "fog"
