@@ -1,69 +1,113 @@
 <div class="display-box col-8 offset-2">
-  <% if @place.photos.present? %>
-  <div class="test">
-  <% @place.photos.each do |photo| %>
-          <div><%= image_tag photo.picture %></div>
-          <span><%= photo.caption %></span>
-        <% end %>
-</div>
-<% end %>
 
-    <h1>
-        <%= @place.name %>
-    </h1>
-    <i>
-        <%= @place.address %>
-    </i>
-    <br/>
-    <br/>
-    <p>
-        <%= @place.description %>
-    </p>
+    <% if @place.photos.present? %>
+      <div class="photo">
+        <% @place.photos.each do |photo| %>
+          <%= image_tag photo.picture %>
+          <br/>
+          <%= photo.caption %>
+       <% end %>
+      </div>
+    <% end %>
 
-    <% if @place.latitude.present? && @place.longitude.present? %>
+    <div class="place_info">
+      <h5><%= @place.name %></h5>
+      <i class="address"><%= @place.address %></i>
+      <br/>
+      <hr/>
+      <div class="description">
+        <p><%= @place.description %></p>
+      </div>
+      <hr/>
+
+    </div>
+    <br/>
+
+  <% if @place.latitude.present? && @place.longitude.present? %>
     <script>
-
-        function initMap() {
-            var myLatLng = {
-                lat: <%= @place.latitude %>,
-                lng: <%= @place.longitude %>
-            };
-
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 12,
-                center: myLatLng
-            });
-
-            var marker = new google.maps.Marker({position: myLatLng, map: map, title: 'Hello World!'});
-        }
+     function initMap() {
+       var myLatLng = {
+         lat: <%= @place.latitude %>,
+         lng: <%= @place.longitude %>
+        };
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: myLatLng
+        });
+        var marker = new google.maps.Marker({position: myLatLng, map: map,  title: 'Hello World!'});
+      }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWNadHm-Cjr4DXRFZ2KIslXht0zczZYk0&callback=initMap"></script>
 
     <div id="map"></div>
-<% else %>
-    <div class="alert alert-danger">No map to display. Address is not vaild</div>
-    <% end %>
+    <br/>
 
+  <% else %>
+     <div class="alert alert-danger">No map to display. Address is not vaild</div>
+  <% end %>
 </div>
-<div class="offset-8 button-space">
+<!-- end of display box -->
+
+<div class="button_section">
+
+  <div class="offset-8">
     <% if current_user && current_user == @place.user %>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPhoto">
+      Add a photo
+    </button>
+
     <%= link_to 'Edit', edit_place_path(@place), class: "btn btn-primary" %>
     <%= link_to 'Destroy', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this?'}, class: "btn btn-danger" %>
     <% end %>
+
+  </div>
 </div>
+<br/>
 
+<div class="comments_header">
 
-<div class="col-10 offset-1">
-  <h1 class="float-left">Comments</h1>
-  <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#myModal">
+  <div class="col-10 offset-1">
+    <h1 class="float-left">Comments</h1>
+
+    <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#myModal">
     Add a comment
-  </button>
+    </button>
+
+  </div>
 </div>
 
 <div class="clear"></div>
 <br/>
 
-<!-- Modal -->
+
+<div class="row">
+  <% if @place.comments.present? %>
+    <% @place.comments.each do |comment| %>
+      <div class="col-12 col-sm-6 ">
+        <blockquote class="display-box-comments">
+          <% if comment.humanized_rating.present? %>
+          <h4><%= comment.humanized_rating %></h4>
+          <br/>
+          <% end %>
+          <i class="fa fa-quote-left" aria-hidden="true"></i>
+          <span class="comment-font"><%= comment.message %> </span>
+          <i class="fa fa-quote-right" aria-hidden="true"></i>
+            -
+          <small><%= comment.user.email %></small>
+        </blockquote>
+      </div>
+    <% end %>
+  <% else %>
+   <div class="col-4 offset-4">
+     <blockquote class="display-box">
+        Tell us what you think
+     </blockquote>
+  </div>
+ <% end %>
+</div>
+
+
+<!-- Modal 1  Add Comment-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -89,39 +133,28 @@
   </div>
 </div>
 
-<div class="display-box col-8 offset-2">
-<%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-  <%= f.input :picture %>
-  <%= f.input :caption %>
-  <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
-<% end %>
-</div>
+<!-- Modal 2 - Add Photo -->
+<div class="modal fade" id="addPhoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Add a photo</h4>
+      </div>
+      <div class="modal-body">
 
+            <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+            <%= f.input :picture %>
+            <%= f.input :caption %>
+      </div>
 
-<div class="row">
-  <% if @place.comments.present? %>
-  <% @place.comments.each do |comment| %>
-    <div class="col-12 col-sm-6 ">
-      <blockquote class="display-box-comments">
-        <% if comment.humanized_rating.present? %>
-          <h4><%= comment.humanized_rating %></h4>
-          <br/>
-        <% end %>
-        <i class="fa fa-quote-left" aria-hidden="true"></i>
-        <span class="comment-font"><%= comment.message %> </span>
-        <i class="fa fa-quote-right" aria-hidden="true"></i>
-        -
-        <small><%= comment.user.email %></small>
-      </blockquote>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= f.submit "Add a photo", class: 'btn btn-warning' %>
+      </div>
+      <% end %>
     </div>
-  <% end %>
-  <% else %>
-<div class="col-4 offset-4">
-  <blockquote class="display-box">
-    Tell us what you think
-    </blockquote>
   </div>
-    <% end %>
-
-
 </div>

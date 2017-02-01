@@ -1,6 +1,7 @@
 @import "bootstrap";
 @import "font-awesome";
 
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
@@ -9,6 +10,7 @@ h1, h2, h3, h4, h5, h6 {
 h4{
   text-align: center;
 }
+
 
 body{
   background: image_url('food.png');
@@ -19,7 +21,7 @@ body{
 .navbar{
   background:image_url('footer_lodyas.png');
   border-radius:0;
-   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 .navbar-inverse .navbar-brand {
@@ -36,8 +38,6 @@ body{
   border-radius: 6px;
   margin-top: 10px;
   margin-bottom: 15px;
-  text-align: center;
-  padding: 10px;
 }
 
 
@@ -81,9 +81,13 @@ body{
 
 #map {
   height: 300px;
+  width: 400px;
+  margin-left: auto;
+  margin-right:auto;
+  border: 1px solid black;
 }
 
-.button-space{
+.button_section{
   padding-top:5px;
   padding-bottom:25px;
 }
@@ -96,8 +100,8 @@ body{
   background-color: rgba(255,255,255, 0.2);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   border-radius: 6px;
-  margin: 10px;
-  padding: 5px;
+  margin: 15px;
+  padding: 10px;
 }
 
 .alert-warning{
@@ -110,9 +114,39 @@ body{
 }
 
 .comment-count{
-  padding-top:20px;
+  // padding-top:20px;
 }
 
-.test {
-  color: red;
+img{
+  width:auto;
+  height:400px;
+}
+
+.photo{
+  background-color: #4AF9BB;
+  margin-right: -15px;
+  margin-left: -15px;
+  padding: 10px;
+  border-radius: 6px 6px 0 0;
+  text-align: center;
+}
+
+.place_info{
+  padding:10px;
+}
+
+.comment_section{
+  text-align: center;
+}
+
+.address{
+  font-size: 0.8em;
+}
+
+a{
+  color: #FF6F00;
+}
+
+.description{
+  text-align:center;
 }
