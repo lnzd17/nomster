@@ -1,7 +1,7 @@
-<div class="display-box col-8 offset-2">
+<div class="display-box-place col-8 offset-2">
 
     <% if @place.photos.present? %>
-      <div class="photo">
+      <div class="photo-large">
         <% @place.photos.each do |photo| %>
           <%= image_tag photo.picture %>
           <br/>

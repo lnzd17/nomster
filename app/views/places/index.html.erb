@@ -6,21 +6,21 @@
   </ol>
   <div class="carousel-inner" role="listbox">
     <div class="carousel-item active">
-      <%= image_tag 'waffles.jpg' %>
+      <%= image_tag 'treat.jpg', class: "image-fluid" %>
       <div class="carousel-caption">
-        Waffles are good anytime of the day
+        Treat yourself
       </div>
     </div>
     <div class="carousel-item">
-      <%= image_tag 'pizza.jpg' %>
+      <%= image_tag 'pizza.jpg', class: "image-fluid"%>
       <div class="carousel-caption">
         Who said pizza can't be fancy?
       </div>
     </div>
     <div class="carousel-item">
-      <%= image_tag 'rice.jpg' %>
+      <%= image_tag 'sandwhich.jpg', class: "image-fluid" %>
       <div class="carousel-caption">
-        Step up your rice game
+        Heaven between two slices of bread
       </div>
     </div>
   </div>
@@ -39,13 +39,14 @@
 
 
 
-
+<div class='row'>
 <% @places.each do |place| %>
-  <div class="display-box col-8 offset-2">
+  <div class="col-4">
+    <div class="display-box">
     <% if place.photos.present? %>
       <div class="photo">
         <% place.photos.each do |photo| %>
-          <%= image_tag photo.picture %>
+          <%= image_tag photo.picture, class:"image-fluid" %>
           <br/>
           <%= photo.caption %>
        <% end %>
@@ -67,8 +68,9 @@
     <% end %> -->
 
     <% if place.comments.present? %>
+    <div class="col-12">
       <div class="comment_section">
-        <div class="col-12">
+
           <span class="comment-count"><i class="fa fa-comments" aria-hidden="true"></i><%=link_to "#{place.comments.count} Comment(s)", place_path(place) %></span>
           <blockquote class="display-box-comments">
             <% if place.comments.last.humanized_rating.present? %>
@@ -86,7 +88,9 @@
        <% end %>
     </div>
   </div>
+</div>
 <% end %>
+</div>
 
 
 <div class="col-10 offset-lg-5">
