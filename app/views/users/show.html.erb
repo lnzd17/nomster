@@ -13,11 +13,14 @@
 <div class="clear"></div>
 </div>
 
+<br/>
 <h4>My Comments</h4>
+<br/>
 <div class="row">
   <% @user.comments.each do |comment| %>
-  <div class="col-12 col-sm-6">
-     <h2 class="text-center"><%= link_to comment.place.name, place_path(comment.place) %></h2>
+  <div class= "col-12 col-sm-6">
+    <div class="display-box-comments">
+     <h5 class="text-center"><%= link_to comment.place.name, place_path(comment.place) %></h5>
      <br/>
   <blockquote>
     <% if comment.humanized_rating.present? %>
@@ -27,5 +30,16 @@
     <small><%= comment.user.email %></small>
   </blockquote>
 </div>
+</div>
   <% end %>
   </div>
+
+<br/>
+<div class="clear"></div>
+  <h4>My Places</h4>
+  <br/>
+  <ul>
+  <% @user.places.each do |place| %>
+    <li><%= link_to place.name, place_path(place) %></li>
+  <% end %>
+  </ul
