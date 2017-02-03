@@ -4,6 +4,6 @@ class Place < ApplicationRecord
   has_many :photos
   geocoded_by :address
   after_validation :geocode
-  validates :name, :address, :description, length: { minimum: 3 }, presence: true
+  validates :name, :address, :description, length: { minimum: 3, maximum: 400}, presence: true
   WillPaginate.per_page = 10
 end
