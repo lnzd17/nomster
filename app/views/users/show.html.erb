@@ -8,9 +8,15 @@
   <div class="col-8 float-right">
     <h3><u>Stats</u></h3>
     <br/>
-    <h6><%= @user.comments.count %> total comments</h6>
+    <h6><%= @user.comments.count %> total comment(s)</h6>
     <br/>
-    <h6><%= @user.comments.where(rating: "5_stars").count %> total five star reviews</h6>
+    <h6> You gave <%= @user.comments.where(rating: "5_stars").count %> places
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      </h6>
   </div>
   </div>
 <div class="clear"></div>
