@@ -10,7 +10,7 @@
     <br/>
     <h6><%= @user.comments.count %> total comment(s)</h6>
     <br/>
-    <h6> You gave <%= @user.comments.where(rating: "5_stars").count %> places
+    <h6> You gave <%= @user.comments.where(rating: 5).count %> places
       <i class="fa fa-star" aria-hidden="true"></i>
       <i class="fa fa-star" aria-hidden="true"></i>
       <i class="fa fa-star" aria-hidden="true"></i>
@@ -32,11 +32,13 @@
      <h5 class="text-center"><%= link_to comment.place.name, place_path(comment.place) %></h5>
      <br/>
   <blockquote>
-    <% if comment.humanized_rating.present? %>
-      <b><%= comment.humanized_rating %></b> -
+    <% comment.rating.to_i.times do |_| %>
+      <i class="fa fa-star" aria-hidden="true"></i>
     <% end %>
+    <br/>
+    <i class="fa fa-quote-left" aria-hidden="true"></i>
     <%= comment.message %>
-    <small><%= comment.user.email %></small>
+    <i class="fa fa-quote-right" aria-hidden="true"></i>
   </blockquote>
 </div>
 </div>
