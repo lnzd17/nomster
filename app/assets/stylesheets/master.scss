@@ -110,7 +110,7 @@ body{
 }
 
 .display-box-comments{
-  background-color: rgba(255,255,255, 0.2);
+  background-color: rgba(0,0,0, 0.4);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   border-radius: 6px;
   margin: 15px;
@@ -139,7 +139,7 @@ body{
 }
 
 .photo img {
-    max-width:auto;
+    max-width:200px;
     max-height:200px;
 }
 .photo-large{
@@ -148,7 +148,7 @@ body{
   font-size: 0.8em;
 }
 .photo-large img {
-    max-width:auto;
+    max-width:400px;
     max-height:400px;
 }
 
@@ -201,4 +201,16 @@ a{
 #photo_picture{
   margin-left: 5px;
   margin-left: 5px;
+}
+
+.font-black{
+  color:black;
+}
+
+.float-right{
+  text-align: right;
+}
+
+button{
+  margin:2px;
 }

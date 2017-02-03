@@ -2,19 +2,22 @@
   <div class="row">
     <div class="col-4">
       <%= image_tag 'user.png' %>
+      <h5> <%= @user.email %> </h5>
+      <h6>Member Since:<%= @user.created_at.strftime("%B %d, %Y") %></h5>
     </div>
-  <div class="col-8">
-    <h2> <%= @user.email %> </h2>
-    <h5>Member Since:<%= @user.created_at.strftime("%B %d, %Y") %></h5>
+  <div class="col-8 float-right">
+    <h3><u>Stats</u></h3>
+    <br/>
     <h6><%= @user.comments.count %> total comments</h6>
-    <h6><%= @user.comments.where(rating: "5_stars").count %> total 5 star reviews</h6>
+    <br/>
+    <h6><%= @user.comments.where(rating: "5_stars").count %> total five star reviews</h6>
   </div>
   </div>
 <div class="clear"></div>
 </div>
 
 <br/>
-<h4>My Comments</h4>
+<h4 class="font-black">My Comments</h4>
 <br/>
 <div class="row">
   <% @user.comments.each do |comment| %>
@@ -36,7 +39,7 @@
 
 <br/>
 <div class="clear"></div>
-  <h4>My Places</h4>
+  <h4 class="font-black">My Places</h4>
   <br/>
   <ul>
   <% @user.places.each do |place| %>
