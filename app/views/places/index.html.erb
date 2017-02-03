@@ -5,20 +5,20 @@
         <li data-target="#carousel-example-generic" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
-        <div class="carousel-item active">
-            <%= image_tag 'treat.jpg' %>
+        <div class="carousel-item">
+            <%= image_tag 'treat.jpg', class:"image-fluid" %>
             <div class="carousel-caption">
                 Treat yourself
             </div>
         </div>
-        <div class="carousel-item">
-            <%= image_tag 'pizza.jpg'%>
+        <div class="carousel-item active">
+            <%= image_tag 'pizza.jpg', class:"image-fluid"%>
             <div class="carousel-caption">
                 Find your favorite slice
             </div>
         </div>
         <div class="carousel-item">
-            <%= image_tag 'sandwhich.jpg'%>
+            <%= image_tag 'sandwhich.jpg', class:"image-fluid"%>
             <div class="carousel-caption">
                 Step up your sandwhich game
             </div>
@@ -33,6 +33,9 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
+<h3 class="main-title"> -Discover and share new places to eat- </h3>
+<br/>
 
 <div class='row'>
   <% @places.each do |place| %>
