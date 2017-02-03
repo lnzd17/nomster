@@ -75,8 +75,8 @@ body{
 }
 
 .btn-danger{
-  background-color: black;
-  border-color: black;
+  background-color: #FF6F00;
+  border-color: #FF6F00;
   font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
 }
 
@@ -101,8 +101,8 @@ body{
 }
 
 .button_section{
-  padding-top:5px;
-  padding-bottom:25px;
+  padding:5px 15px 25px 15px;
+  text-align: right;
 }
 
 .clear {
@@ -218,4 +218,8 @@ button{
 .main-title{
   text-align: center;
   color:black;
+}
+
+.comments-header{
+    text-align: center;
 }

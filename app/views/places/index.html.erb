@@ -65,11 +65,9 @@
             <span class="comment-count">
               <i class="fa fa-comments" aria-hidden="true"></i><%=link_to "#{place.comments.count} Comment(s)", place_path(place) %></span>
               <blockquote class="display-box-comments">
-                <%place.comments.each do |comment| %>
-                  <% comment.rating.to_i.times do |_| %>
+                  <% place.comments.last.rating.to_i.times do |_| %>
                     <i class="fa fa-star" aria-hidden="true"></i>
                   <% end %>
-                <% end %>
                 <br/>
                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                   <span class="comment-font"><%= place.comments.last.message %>
