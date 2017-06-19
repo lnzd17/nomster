@@ -1,24 +1,27 @@
-# README
+== README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the second Ruby on Rails application I built while attending FireHose Project's Software Engineering Bootcamp.
 
-Things you may want to cover:
+=== Features
+* A user can sign in/ sign up
+* A registered user can add a new 'place' - name, address, description
+* A registered user can edit a 'place', delete a 'place', and add a photo to a 'place'
+* A registered user can can add a comment to a place and rate it
+* A registered user can access their 'profile page' containing stats on comments, places added, and when the user joined
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
+=== Tools
+* Heroku
+* Simple Form
+* Bootstrap
+* Will Paginate
+* Font Awesome
+* Geocoder
+* Figaro
+* Carrierwave
+* Fog
+* Action Mailer
+* AWS
+* 
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
